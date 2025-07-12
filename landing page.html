@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let It Bake - Artisan Bakery & Patisserie</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #DEB887;
+            --secondary: #FCE8D5;
+            --accent: #BC6C25;
+            --dark: #4E342E;
+            --light: #FAF3E0;
+            --success: #6D9773;
+        }
+
+        section {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .display-1,
+        .display-2,
+        .display-3,
+        .display-4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .navbar {
+            background-color: rgba(255, 249, 242, 0.95) !important;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: var(--accent) !important;
+        }
+
+        .nav-link {
+            position: relative;
+            color: var(--dark);
+            font-weight: 600;
+            margin: 0 0.5rem;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .hero-section {
+            height: 100vh;
+            min-height: 700px;
+            background: linear-gradient(rgba(75, 63, 57, 0.4), rgba(75, 63, 57, 0.4)),
+                url('https://images.unsplash.com/photo-1608198093002-ad4e005484ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #8a5759;
+            border-color: #8a5759;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline-primary {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .about-section {
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-img {
+            border-radius: 15px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease;
+        }
+
+        .about-img:hover {
+            transform: scale(1.03);
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .product-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img {
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            height: 100%;
+        }
+
+        .testimonial-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+        }
+
+        .rating {
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .team-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-img {
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: var(--accent);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .newsletter-section {
+            background: linear-gradient(rgba(75, 63, 57, 0.8), rgba(75, 63, 57, 0.8)),
+                url('https://images.unsplash.com/photo-1608198093002-ad4e005484ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80') no-repeat center center/cover;
+            color: white;
+        }
+
+        .newsletter-form .form-control {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 1rem;
+        }
+
+        .newsletter-form .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .newsletter-form .btn {
+            padding: 1rem 2rem;
+        }
+
+        .contact-info {
+            background-color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-right: 1rem;
+        }
+
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-logo {
+            font-weight: 900;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-link:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--dark);
+            transform: translateY(-5px);
+        }
+
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .slide-up {
+            animation: slideUp 1s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-cake2-fill me-2"></i>Let It Bake
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#products">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <div class="ms-lg-3 mt-3 mt-lg-0">
+                    <button class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#searchModal">
+                        <i class="bi bi-search"></i>
+                    </button>
+                    <button class="btn btn-primary position-relative" data-bs-toggle="offcanvas"
+                        data-bs-target="#cartOffcanvas" aria-controls="cartOffcanvas">
+                        <i class="bi bi-cart3"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                            id="cartCount">
+                            0
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="hero-content slide-up">
+                        <h1 class="hero-title">Artisan Bakery & Patisserie</h1>
+                        <p class="hero-subtitle">Handcrafted with love since 2010. Experience the finest baked goods
+                            made from traditional recipes and premium ingredients.</p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="#products" class="btn btn-primary btn-lg">Our Products</a>
+                            <a href="#contact" class="btn btn-outline-light btn-lg">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-7 about-section" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="position-relative">
+                        <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80"
+                            alt="Our bakery" class="img-fluid about-img">
+                        <div class="position-absolute bottom-0 start-0 bg-white p-4 shadow-sm rounded-end"
+                            style="width: 80%; transform: translateY(50%);">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary rounded-circle p-3 me-3">
+                                    <i class="bi bi-award-fill text-white fs-4"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">Award Winning</h5>
+                                    <p class="mb-0 text-muted">Best Bakery 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <span class="text-accent fw-bold">ABOUT US</span>
+                    <h2 class="section-title text-start mb-4">Our Story</h2>
+                    <p class="lead">Founded in 2010 by master baker Sarah Johnson, Let It Bake began as a small
+                        neighborhood bakery with a passion for authentic, handcrafted breads and pastries.</p>
+                    <p>What started as a humble storefront has grown into a beloved local institution, known for our
+                        commitment to traditional techniques and the finest ingredients. We still bake everything
+                        in-house daily, just like we did on day one.</p>
+                    <p>Our team of skilled bakers brings decades of combined experience, blending time-honored methods
+                        with creative innovation to deliver exceptional quality in every bite.</p>
+                    <div class="row mt-4">
+                        <div class="col-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                <span>100% Natural Ingredients</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                <span>Handcrafted Daily</span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                <span>Family Recipes</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                <span>Locally Sourced</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary mt-3">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-7 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <span class="text-accent fw-bold">WHY CHOOSE US</span>
+                    <h2 class="section-title mb-5">Our Baking Philosophy</h2>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            <i class="bi bi-egg-fill"></i>
+                        </div>
+                        <h4>Premium Ingredients</h4>
+                        <p>We source only the finest, all-natural ingredients from trusted local suppliers and farmers.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            <i class="bi bi-stopwatch-fill"></i>
+                        </div>
+                        <h4>Traditional Methods</h4>
+                        <p>Our bakers use time-honored techniques, allowing proper fermentation and development of
+                            flavors.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            <i class="bi bi-heart-fill"></i>
+                        </div>
+                        <h4>Made with Love</h4>
+                        <p>Every product is handcrafted with care and attention to detail that you can taste.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            <i class="bi bi-flower1"></i>
+                        </div>
+                        <h4>No Preservatives</h4>
+                        <p>We never use artificial additives or preservatives - just pure, simple ingredients.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="py-7" id="products">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <span class="text-accent fw-bold">OUR SELECTION</span>
+                    <h2 class="section-title mb-5">Fresh From Our Oven</h2>
+                </div>
+            </div>
+
+            <ul class="nav nav-pills justify-content-center mb-5" id="productTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="breads-tab" data-bs-toggle="pill" data-bs-target="#breads"
+                        type="button" role="tab">Breads</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pastries-tab" data-bs-toggle="pill" data-bs-target="#pastries"
+                        type="button" role="tab">Pastries</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="cakes-tab" data-bs-toggle="pill" data-bs-target="#cakes" type="button"
+                        role="tab">Cakes</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="cookies-tab" data-bs-toggle="pill" data-bs-target="#cookies"
+                        type="button" role="tab">Cookies</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="seasonal-tab" data-bs-toggle="pill" data-bs-target="#seasonal"
+                        type="button" role="tab">Seasonal</button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="productTabsContent">
+                <div class="tab-pane fade show active" id="breads" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="product-card">
+                                <div class="position-relative overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                        class="product-img w-100" alt="Sourdough Bread">
+                                    <span class="product-badge">Bestseller</span>
+                                </div>
+                                <div class="p-4">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="mb-0">Artisan Sourdough</h5>
+                                        <span class="text-accent fw-bold">$6.99</span>
+                                    </div>
+                                    <p class="text-muted mb-4">Traditional San Francisco-style sourdough with perfect
+                                        crust and tangy flavor.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="rating">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <span class="ms-2">(48)</span>
+                                        </div>
+                                        <button class="btn btn-sm btn-primary add-to-cart" data-id="1"
+                                            data-name="Artisan Sourdough" data-price="6.99">
+                                            <i class="bi bi-cart-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="product-card">
+                                <div class="position-relative overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80"
+                                        class="product-img w-100" alt="Baguette">
+                                </div>
+                                <div class="p-4">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="mb-0">French Baguette</h5>
+                                        <span class="text-accent fw-bold">$4.99</span>
+                                    </div>
+                                    <p class="text-muted mb-4">Crusty exterior with a light, airy interior - perfect for
+                                        sandwiches or with butter.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="rating">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-half"></i>
+                                            <span class="ms-2">(36)</span>
+                                        </div>
+                                        <button class="btn btn-sm btn-primary add-to-cart" data-id="2"
+                                            data-name="French Baguette" data-price="4.99">
+                                            <i class="bi bi-cart-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="product-card">
+                                <div class="position-relative overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                        class="product-img w-100" alt="Whole Grain Bread">
+                                    <span class="product-badge">New</span>
+                                </div>
+                                <div class="p-4">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="mb-0">Multigrain Loaf</h5>
+                                        <span class="text-accent fw-bold">$7.49</span>
+                                    </div>
+                                    <p class="text-muted mb-4">Packed with seeds and whole grains for a nutritious and
+                                        flavorful option.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="rating">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star"></i>
+                                            <span class="ms-2">(12)</span>
+                                        </div>
+                                        <button class="btn btn-sm btn-primary add-to-cart" data-id="3"
+                                            data-name="Multigrain Loaf" data-price="7.49">
+                                            <i class="bi bi-cart-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="product-card">
+                                <div class="position-relative overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                        class="product-img w-100" alt="Brioche">
+                                </div>
+                                <div class="p-4">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="mb-0">Buttery Brioche</h5>
+                                        <span class="text-accent fw-bold">$8.99</span>
+                                    </div>
+                                    <p class="text-muted mb-4">Rich, tender, and slightly sweet - perfect for French
+                                        toast or sandwiches.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="rating">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <span class="ms-2">(42)</span>
+                                        </div>
+                                        <button class="btn btn-sm btn-primary add-to-cart" data-id="4"
+                                            data-name="Buttery Brioche" data-price="8.99">
+                                            <i class="bi bi-cart-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pastries" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="product-card">
+                                <div class="position-relative overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1627834377411-8da5f4f09de8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80"
+                                        class="product-img w-100" alt="Croissant">
+                                    <span class="product-badge">Popular</span>
+                                </div>
+                                <div class="p-4">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="mb-0">Butter Croissant</h5>
+                                        <span class="text-accent fw-bold">$3.99</span>
+                                    </div>
+                                    <p class="text-muted mb-4">Flaky, buttery layers with a perfect golden crust - our
+                                        signature pastry.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="rating">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <span class="ms-2">(87)</span>
+                                        </div>
+                                        <button class="btn btn-sm btn-primary add-to-cart" data-id="5"
+                                            data-name="Butter Croissant" data-price="3.99">
+                                            <i class="bi bi-cart-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="product-card">
+                                <div class="position-relative overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1558312651-5d1d47c48a7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                        class="product-img w-100" alt="Pain au Chocolat">
+                                </div>
+                                <div class="p-4">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="mb-0">Pain au Chocolat</h5>
+                                        <span class="text-accent fw-bold">$4.49</span>
+                                    </div>
+                                    <p class="text-muted mb-4">Buttery croissant dough wrapped around premium dark
+                                        chocolate.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="rating">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-half"></i>
+                                            <span class="ms-2">(63)</span>
+                                        </div>
+                                        <button class="btn btn-sm btn-primary add-to-cart" data-id="6"
+                                            data-name="Pain au Chocolat" data-price="4.49">
+                                            <i class="bi bi-cart-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="product-card">
+                                <div class="position-relative overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1587241321921-91a834d6d191?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                        class="product-img w-100" alt="Almond Croissant">
+                                    <span class="product-badge">New</span>
+                                </div>
+                                <div class="p-4">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="mb-0">Almond Croissant</h5>
+                                        <span class="text-accent fw-bold">$4.99</span>
+                                    </div>
+                                    <p class="text-muted mb-4">Twice-baked croissant filled with almond cream and topped
+                                        with sliced almonds.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="rating">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star"></i>
+                                            <span class="ms-2">(28)</span>
+                                        </div>
+                                        <button class="btn btn-sm btn-primary add-to-cart" data-id="7"
+                                            data-name="Almond Croissant" data-price="4.99">
+                                            <i class="bi bi-cart-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="product-card">
+                                <div class="position-relative overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1627834377411-8da5f4f09de8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80"
+                                        class="product-img w-100" alt="Danish Pastry">
+                                </div>
+                                <div class="p-4">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="mb-0">Fruit Danish</h5>
+                                        <span class="text-accent fw-bold">$4.25</span>
+                                    </div>
+                                    <p class="text-muted mb-4">Flaky pastry with vanilla custard and seasonal fruit
+                                        topping.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="rating">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-half"></i>
+                                            <span class="ms-2">(39)</span>
+                                        </div>
+                                        <button class="btn btn-sm btn-primary add-to-cart" data-id="8"
+                                            data-name="Fruit Danish" data-price="4.25">
+                                            <i class="bi bi-cart-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Continue with other product categories (Cakes, Cookies, Seasonal) -->
+                <!-- For brevity, I'll show the structure for one more category -->
+
+                <div class="tab-pane fade" id="cakes" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="product-card">
+                                <div class="position-relative overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1589&q=80"
+                                        class="product-img w-100" alt="Chocolate Cake">
+                                    <span class="product-badge">Bestseller</span>
+                                </div>
+                                <div class="p-4">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="mb-0">Chocolate Fudge</h5>
+                                        <span class="text-accent fw-bold">$32.99</span>
+                                    </div>
+                                    <p class="text-muted mb-4">Rich, moist chocolate cake with layers of fudge frosting.
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="rating">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <span class="ms-2">(112)</span>
+                                        </div>
+                                        <button class="btn btn-sm btn-primary add-to-cart" data-id="9"
+                                            data-name="Chocolate Fudge Cake" data-price="32.99">
+                                            <i class="bi bi-cart-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Additional cake products would go here -->
+                    </div>
+                </div>
+
+                <!-- Similar structure would continue for Cookies and Seasonal tabs -->
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-outline-primary">View Full Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-7 bg-light" id="gallery">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <span class="text-accent fw-bold">VISUAL DELIGHTS</span>
+                    <h2 class="section-title mb-5">Our Bakery Gallery</h2>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-md-4 col-6">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal"
+                        data-bs-img="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80">
+                        <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80"
+                            class="img-fluid rounded-3" alt="Freshly baked artisan bread">
+                    </a>
+                </div>
+                <div class="col-md-4 col-6">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal"
+                        data-bs-img="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80"
+                            class="img-fluid rounded-3" alt="Assorted French pastries">
+                    </a>
+                </div>
+                <div class="col-md-4 col-6">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal"
+                        data-bs-img="https://images.unsplash.com/photo-1541783245831-57d6fb0926d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80">
+                        <img src="https://images.unsplash.com/photo-1541783245831-57d6fb0926d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80"
+                            class="img-fluid rounded-3" alt="Colorful macarons">
+                    </a>
+                </div>
+                <div class="col-md-4 col-6">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal"
+                        data-bs-img="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80">
+                        <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80"
+                            class="img-fluid rounded-3" alt="Chocolate cake with berries">
+                    </a>
+                </div>
+                <div class="col-md-4 col-6">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal"
+                        data-bs-img="https://images.unsplash.com/photo-1552689486-f6773047d19f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80">
+                        <img src="https://images.unsplash.com/photo-1552689486-f6773047d19f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80"
+                            class="img-fluid rounded-3" alt="Cupcakes with frosting">
+                    </a>
+                </div>
+                <div class="col-md-4 col-6">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal"
+                        data-bs-img="https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80">
+                        <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80"
+                            class="img-fluid rounded-3" alt="Breakfast pastries and coffee">
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-primary">View More Photos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-7" id="testimonials">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <span class="text-accent fw-bold">HAPPY CUSTOMERS</span>
+                    <h2 class="section-title mb-5">What Our Customers Say</h2>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="testimonial-card fade-in">
+                        <div class="rating mb-3">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="mb-4">"The sourdough bread from Let It Bake is absolutely incredible! The crust is
+                            perfectly crispy and the inside is so flavorful. I come here every weekend without fail."
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" class="testimonial-img me-3"
+                                alt="Customer">
+                            <div>
+                                <h6 class="mb-0">Sarah Johnson</h6>
+                                <small class="text-muted">Local Food Blogger</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="testimonial-card fade-in">
+                        <div class="rating mb-3">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="mb-4">"I ordered a birthday cake for my daughter and it was beyond perfect! Not only
+                            beautiful but delicious too. The staff went above and beyond to make it special."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" class="testimonial-img me-3"
+                                alt="Customer">
+                            <div>
+                                <h6 class="mb-0">Michael Chen</h6>
+                                <small class="text-muted">Regular Customer</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="testimonial-card fade-in">
+                        <div class="rating mb-3">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                        </div>
+                        <p class="mb-4">"As a French expat, I'm very picky about my pastries. Let It Bake makes the most
+                            authentic croissants I've found outside of Paris. The butter flavor is perfection!"</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="testimonial-img me-3"
+                                alt="Customer">
+                            <div>
+                                <h6 class="mb-0">Claire Dubois</h6>
+                                <small class="text-muted">Food Critic</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-7 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <span class="text-accent fw-bold">MEET THE TEAM</span>
+                    <h2 class="section-title mb-5">Our Master Bakers</h2>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            class="team-img w-100" alt="Baker">
+                        <div class="p-4 text-center">
+                            <h5 class="mb-1">Sarah Johnson</h5>
+                            <p class="text-muted mb-3">Head Baker & Founder</p>
+                            <div class="d-flex justify-content-center">
+                                <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                                <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                                <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                            class="team-img w-100" alt="Baker">
+                        <div class="p-4 text-center">
+                            <h5 class="mb-1">Carlos Mendez</h5>
+                            <p class="text-muted mb-3">Pastry Chef</p>
+                            <div class="d-flex justify-content-center">
+                                <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                                <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                                <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80"
+                            class="team-img w-100" alt="Baker">
+                        <div class="p-4 text-center">
+                            <h5 class="mb-1">Emily Wilson</h5>
+                            <p class="text-muted mb-3">Cake Decorator</p>
+                            <div class="d-flex justify-content-center">
+                                <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                                <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                                <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=761&q=80"
+                            class="team-img w-100" alt="Baker">
+                        <div class="p-4 text-center">
+                            <h5 class="mb-1">Jamal Williams</h5>
+                            <p class="text-muted mb-3">Bread Specialist</p>
+                            <div class="d-flex justify-content-center">
+                                <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                                <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                                <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-7 newsletter-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-4">Join Our Bakery Club</h2>
+                    <p class="mb-5">Subscribe to our newsletter and get 10% off your first order plus exclusive access
+                        to new products and special events.</p>
+
+                    <form class="newsletter-form row g-3 justify-content-center">
+                        <div class="col-md-8">
+                            <input type="email" class="form-control form-control-lg" placeholder="Your email address">
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary btn-lg w-100">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-7" id="contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <span class="text-accent fw-bold">GET IN TOUCH</span>
+                    <h2 class="section-title mb-5">Contact Us</h2>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="contact-info">
+                        <h4 class="mb-4">Let's talk about your next order</h4>
+                        <p>Have questions about our products or want to place a special order? Reach out to us and our
+                            team will be happy to assist you.</p>
+
+                        <div class="mt-5">
+                            <div class="d-flex mb-4">
+                                <div class="contact-icon">
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">Our Location</h5>
+                                    <p class="mb-0">123 Baker Street, San Francisco, CA 94102</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-4">
+                                <div class="contact-icon">
+                                    <i class="bi bi-telephone-fill"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">Phone Number</h5>
+                                    <p class="mb-0">(415) 555-1234</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-4">
+                                <div class="contact-icon">
+                                    <i class="bi bi-envelope-fill"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">Email Address</h5>
+                                    <p class="mb-0">hello@letitbake.com</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-4">
+                                <div class="contact-icon">
+                                    <i class="bi bi-clock-fill"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">Opening Hours</h5>
+                                    <p class="mb-0">Monday - Friday: 7am - 7pm<br>Saturday - Sunday: 8am - 5pm</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.222042340234!2d-122.4194!3d37.7749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDQ2JzI5LjYiTiAxMjLCsDI1JzA5LjkiVw!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
+                            width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+
+                    <form class="mt-4">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Your Name">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Your Email">
+                            </div>
+                            <div class="col-12">
+                                <input type="text" class="form-control" placeholder="Subject">
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <div class="footer-logo">
+                        <i class="bi bi-cake2-fill me-2"></i>Let It Bake
+                    </div>
+                    <p class="mb-4">Artisan bakery crafting exceptional breads, pastries and desserts since 2010. Made
+                        with love and the finest ingredients.</p>
+                    <div class="d-flex">
+                        <a href="#" class="social-icon me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon me-3"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon me-3"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="text-white mb-4">Quick Links</h5>
+                    <a href="#" class="footer-link">Home</a>
+                    <a href="#" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Products</a>
+                    <a href="#" class="footer-link">Gallery</a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="text-white mb-4">Products</h5>
+                    <a href="#" class="footer-link">Breads</a>
+                    <a href="#" class="footer-link">Pastries</a>
+                    <a href="#" class="footer-link">Cakes</a>
+                    <a href="#" class="footer-link">Cookies</a>
+                    <a href="#" class="footer-link">Seasonal</a>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="text-white mb-4">Newsletter</h5>
+                    <p>Subscribe to get updates on new products and special offers.</p>
+                    <form class="mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your Email">
+                            <button class="btn btn-primary" type="button">Subscribe</button>
+                        </div>
+                    </form>
+                    <p class="small text-muted">We'll never share your email with anyone else.</p>
+                </div>
+            </div>
+            <hr class="my-5" style="border-color: rgba(255,255,255,0.1);">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="small mb-0">&copy; 2023 Let It Bake. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="small mb-0">
+                        <a href="#" class="text-muted me-3">Privacy Policy</a>
+                        <a href="#" class="text-muted me-3">Terms of Service</a>
+                        <a href="#" class="text-muted">FAQ</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- Search Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5">
+                    <form>
+                        <div class="input-group">
+                            <input type="text" class="form-control form-control-lg"
+                                placeholder="Search our products...">
+                            <button class="btn btn-primary" type="submit">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Offcanvas -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title" id="cartOffcanvasLabel">Your Cart</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="text-center py-5" id="emptyCart">
+                <i class="bi bi-cart-x text-muted" style="font-size: 3rem;"></i>
+                <h5 class="mt-3">Your cart is empty</h5>
+                <p class="text-muted">Start adding some delicious items</p>
+                <a href="#products" class="btn btn-primary mt-3" data-bs-dismiss="offcanvas">Browse Products</a>
+            </div>
+
+            <div id="cartItems" style="display: none;">
+                <div class="list-group mb-3" id="cartItemsList">
+                    <!-- Cart items will be added here dynamically -->
+                </div>
+                <div class="d-flex justify-content-between mb-3">
+                    <span>Subtotal:</span>
+                    <span class="fw-bold" id="cartSubtotal">$0.00</span>
+                </div>
+                <div class="d-flex justify-content-between mb-3">
+                    <span>Tax:</span>
+                    <span class="fw-bold" id="cartTax">$0.00</span>
+                </div>
+                <div class="d-flex justify-content-between mb-4">
+                    <span>Total:</span>
+                    <span class="fw-bold fs-5 text-accent" id="cartTotal">$0.00</span>
+                </div>
+                <a href="#" class="btn btn-primary w-100">Proceed to Checkout</a>
+                <a href="#products" class="btn btn-outline-primary w-100 mt-3" data-bs-dismiss="offcanvas">Continue
+                    Shopping</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Modal -->
+    <div class="modal fade" id="galleryModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content bg-transparent border-0">
+                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3"
+                    data-bs-dismiss="modal" aria-label="Close"></button>
+                <img src="" class="img-fluid rounded-3" id="galleryModalImg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <script>
+        // // Navbar scroll effect
+        // window.addEventListener('scroll', function () {
+        //     const navbar = document.querySelector('.navbar');
+        //     if (window.scrollY > 50) {
+        //         navbar.classList.add('scrolled');
+        //     } else {
+        //         navbar.classList.remove('scrolled');
+        //     }
+        // });
+
+        // // Back to top button
+        // const backToTopButton = document.querySelector('.back-to-top');
+        // window.addEventListener('scroll', function () {
+        //     if (window.scrollY > 300) {
+        //         backToTopButton.classList.add('active');
+        //     } else {
+        //         backToTopButton.classList.remove('active');
+        //     }
+        // });
+
+        // backToTopButton.addEventListener('click', function (e) {
+        //     e.preventDefault();
+        //     window.scrollTo({ top: 0, behavior: 'smooth' });
+        // });
+
+        // // Initialize gallery modal
+        // const galleryModal = document.getElementById('galleryModal');
+        // if (galleryModal) {
+        //     galleryModal.addEventListener('show.bs.modal',
+        //         function (event) {
+        //             const button = event.relatedTarget; // Button that triggered the modal
+        //             const imgSrc = button.getAttribute('data-bs-img');
+        //             const modalImg = document.getElementById('galleryModalImg');
+        //             modalImg.src = imgSrc;
+        //         });
+        // }
+        // // Shopping cart functionality
+        // let cart = [];
+
+        // // Add to cart buttons
+        // document.querySelectorAll('.add-to-cart').forEach(button => {
+        //     button.addEventListener('click', function () {
+        //         const id = this.getAttribute('data-id');
+        //         const name = this.getAttribute('data-name');
+        //         const price = parseFloat(this.getAttribute('data-price'));
+
+        //         // Check if item already exists in cart
+        //         const existingItem = cart.find(item => item.id === id);
+
+        //         if (existingItem) {
+        //             existingItem.quantity += 1;
+        //         } else {
+        //             cart.push({
+        //                 id,
+        //                 name,
+        //                 price,
+        //                 quantity: 1
+        //             });
+        //         }
+
+        //         updateCart();
+
+        //         // Show success notification
+        //         const toast = new bootstrap.Toast(document.getElementById('addedToCartToast'));
+        //         toast.show();
+        //     });
+        // });
+
+        // // Update cart function
+        // function updateCart() {
+        //     const cartItemsList = document.getElementById('cartItemsList');
+        //     const emptyCart = document.getElementById('emptyCart');
+        //     const cartContainer = document.getElementById('cartItems');
+
+        //     if (cart.length === 0) {
+        //         emptyCart.style.display = 'block';
+        //         cartContainer.style.display = 'none';
+        //         document.querySelector('.cart-count').textContent = '0';
+        //     } else {
+        //         emptyCart.style.display = 'none';
+        //         cartContainer.style.display = 'block';
+
+        //         // Update cart count in navbar
+        //         const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+        //         document.querySelector('.cart-count').textContent = totalItems;
+
+        //         // Clear existing items
+        //         cartItemsList.innerHTML = '';
+
+        //         // Add items to cart list
+        //         cart.forEach(item => {
+        //             const itemTotal = (item.price * item.quantity).toFixed(2);
+
+        //             const cartItem = document.createElement('div');
+        //             cartItem.className = 'list-group-item';
+        //             <div class="d-flex justify-content-between align-items-center">
+        //                 <div>
+        //                     <h6 class="mb-1">${item.name}</h6>
+        //                     <small class="text-muted">$${item.price.toFixed(2)} × ${item.quantity}</small>
+        //                 </div>
+        //                 <div class="d-flex align-items-center">
+        //                     <span class="me-3">$${itemTotal}</span>
+        //                     <button class="btn btn-sm btn-outline-danger remove-from-cart" data-id="${item.id}">
+        //                         <i class="bi bi-trash"></i>
+        //                     </button>
+        //                 </div>
+        //             </div>
+        //         ;
+        //             cartItemsList.appendChild(cartItem);
+        //         });
+
+        //         // Add event listeners to remove buttons
+        //         document.querySelectorAll('.remove-from-cart').forEach(button => {
+        //             button.addEventListener('click', function () {
+        //                 const id = this.getAttribute('data-id');
+        //                 cart = cart.filter(item => item.id !== id);
+        //                 updateCart();
+        //             });
+        //         });
+
+        //         // Calculate totals
+        //         const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+        //         const tax = subtotal * 0.08; // Assuming 8% tax
+        //         const total = subtotal + tax;
+
+        //         document.getElementById('cartSubtotal').textContent = `$${subtotal.toFixed(2)}`;
+        //         document.getElementById('cartTax').textContent = `$${tax.toFixed(2)}`;
+        //         document.getElementById('cartTotal').textContent = `$${total.toFixed(2)}`;
+        //     }
+        // }
+
+        // // Initialize tooltips
+        // const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        // tooltipTriggerList.map(function (tooltipTriggerEl) {
+        //     return new bootstrap.Tooltip(tooltipTriggerEl);
+        // });
+
+        // // Fade-in animation for elements
+        // const fadeElements = document.querySelectorAll('.fade-in');
+
+        // function checkFade() {
+        //     fadeElements.forEach(element => {
+        //         const elementTop = element.getBoundingClientRect().top;
+        //         const windowHeight = window.innerHeight;
+
+        //         if (elementTop < windowHeight - 100) {
+        //             element.classList.add('show');
+        //         }
+        //     });
+        // }
+
+        // window.addEventListener('scroll', checkFade);
+        // window.addEventListener('load', checkFade);
+
+        // // Product tabs - remember last active tab
+        // const productTabEl = document.getElementById('productsTab');
+        // if (productTabEl) {
+        //     productTabEl.addEventListener('shown.bs.tab', function (event) {
+        //         const activeTab = event.target.getAttribute('href');
+        //         localStorage.setItem('activeProductTab', activeTab);
+        //     });
+
+        //     // Check for saved tab
+        //     const savedTab = localStorage.getItem('activeProductTab');
+        //     if (savedTab) {
+        //         const tab = new bootstrap.Tab(document.querySelector(`[href="${savedTab}"]`));
+        //         tab.show();
+        //     }
+        // }
+    </script>
+</body>
+
+</html>
