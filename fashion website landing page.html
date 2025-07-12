@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chic & Elegance | Premium Fashion Boutique</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #f8d7e6; /* Soft pink */
+            --secondary-color: #e2f3f5; /* Light blue */
+            --accent-color: #d4a5c3; /* Muted purple */
+            --dark-color: #3a3845; /* Deep navy */
+            --light-color: #f9f9f9;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+        
+        h1, h2, h3, h4, h5, .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(58, 56, 69, 0.7), rgba(58, 56, 69, 0.7)), 
+                        url('https://i.pinimg.com/736x/b2/a5/f8/b2a5f8b6b404338879c44849e9e81e9e.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            color: var(--dark-color) !important;
+            font-size: 1.8rem;
+        }
+        
+        .nav-link {
+            color: var(--dark-color);
+            font-weight: 500;
+            margin: 0 0.5rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--dark-color);
+            border-color: var(--dark-color);
+        }
+        
+        .btn-outline-primary {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .feature-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-card img {
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .feature-card .card-body {
+            background-color: white;
+        }
+        
+        .testimonial-card {
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 1rem;
+        }
+        
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+        }
+        
+        .newsletter-section {
+            background-color: var(--secondary-color);
+            padding: 4rem 0;
+            margin: 4rem 0;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .social-icon {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+        }
+        
+        .social-icon:hover {
+            color: var(--accent-color);
+        }
+        
+        .product-tab .nav-link {
+            color: var(--dark-color);
+        }
+        
+        .product-tab .nav-link.active {
+            color: var(--accent-color);
+            font-weight: 600;
+            background: transparent;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .discount-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Chic & Elegance</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Collections</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            Shop
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">New Arrivals</a></li>
+                            <li><a class="dropdown-item" href="#">Dresses</a></li>
+                            <li><a class="dropdown-item" href="#">Accessories</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+                <div class="ms-3 d-flex">
+                    <a href="#" class="btn btn-outline-primary me-2"><i class="bi bi-search"></i></a>
+                    <a href="#" class="btn btn-outline-primary"><i class="bi bi-bag"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-3 mb-4">Elevate Your Style</h1>
+            <p class="lead mb-5">Discover our exclusive collection of premium fashion pieces</p>
+            <a href="#" class="btn btn-primary btn-lg px-4 me-2">Shop Now</a>
+            <a href="#" class="btn btn-outline-light btn-lg px-4">Explore</a>
+        </div>
+    </section>
+
+    <!-- Featured Collections -->
+    <section class="container mb-5">
+        <div class="text-center mb-5">
+            <h2 class="mb-3">Featured Collections</h2>
+            <p class="text-muted">Curated selections for every occasion</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card feature-card">
+                    <img src="https://i.pinimg.com/736x/fa/c9/3e/fac93e85f76177b23de337f7dcba1b8d.jpg" class="card-img-top" alt="Summer Collection">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Summer Essentials</h5>
+                        <p class="card-text">Light and breezy outfits for warm days</p>
+                        <a href="#" class="btn btn-outline-primary">View Collection</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card">
+                    <img src="https://i.pinimg.com/736x/73/58/ef/7358efcca67de919189a0c233dceb4bd.jpg" class="card-img-top" alt="Evening Wear">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Evening Elegance</h5>
+                        <p class="card-text">Stunning pieces for your special nights</p>
+                        <a href="#" class="btn btn-outline-primary">View Collection</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card">
+                    <img src="https://i.pinimg.com/736x/ff/84/09/ff84093970b8cdaad77238ad2596d43a.jpg" class="card-img-top" alt="Casual Wear">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Casual Chic</h5>
+                        <p class="card-text">Comfort meets style for everyday wear</p>
+                        <a href="#" class="btn btn-outline-primary">View Collection</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="container mb-5 py-5 bg-light rounded">
+        <div class="text-center mb-5">
+            <h2 class="mb-3">New Arrivals</h2>
+            <p class="text-muted">Fresh styles just added to our collection</p>
+        </div>
+        
+        <!-- Product Tabs -->
+        <ul class="nav product-tab justify-content-center mb-4" id="productTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="women-tab" data-bs-toggle="tab" data-bs-target="#women">Women</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="men-tab" data-bs-toggle="tab" data-bs-target="#men">Men</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="accessories-tab" data-bs-toggle="tab" data-bs-target="#accessories">Accessories</button>
+            </li>
+        </ul>
+        
+        <div class="tab-content" id="productTabContent">
+            <div class="tab-pane fade show active" id="women">
+                <div class="row">
+                    <div class="col-md-3 mb-4">
+                        <div class="card h-100 border-0 position-relative">
+                            <span class="discount-badge">-20%</span>
+                            <img src="https://i.pinimg.com/736x/a9/d4/5b/a9d45beba8be49d656174c4ad63ba926.jpg" class="card-img-top" alt="Floral Dress">
+                            <div class="card-body">
+                                <h5 class="card-title">Floral Maxi Dress</h5>
+                                <p class="card-text text-muted">$89.99 <span class="text-decoration-line-through">$112.00</span></p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0">
+                                <button class="btn btn-primary w-100">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card h-100 border-0">
+                            <img src="https://i.pinimg.com/736x/19/be/3e/19be3ee7ed7fc767afca02db3fe6db8b.jpg" class="card-img-top" alt="Denim Jacket">
+                            <div class="card-body">
+                                <h5 class="card-title">Classic Denim Jacket</h5>
+                                <p class="card-text text-muted">$65.00</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0">
+                                <button class="btn btn-primary w-100">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card h-100 border-0 position-relative">
+                            <span class="discount-badge">New</span>
+                            <img src="https://i.pinimg.com/736x/21/4d/70/214d704c5fd1512d24b4b4e69d05f177.jpg" class="card-img-top" alt="Silk Blouse">
+                            <div class="card-body">
+                                <h5 class="card-title">Silk Wrap Blouse</h5>
+                                <p class="card-text text-muted">$78.50</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0">
+                                <button class="btn btn-primary w-100">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card h-100 border-0">
+                            <img src="https://i.pinimg.com/736x/80/3f/6d/803f6de940cff6b513ef6efbfac6ac1f.jpg" class="card-img-top" alt="Wide-leg Pants">
+                            <div class="card-body">
+                                <h5 class="card-title">Wide-leg Trousers</h5>
+                                <p class="card-text text-muted">$62.00</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0">
+                                <button class="btn btn-primary w-100">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="men">
+                <!-- Men's products would go here -->
+                <div class="text-center py-4">
+                    <p>New men's collection coming soon!</p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="accessories">
+                <!-- Accessories would go here -->
+                <div class="text-center py-4">
+                    <p>New accessories collection coming soon!</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="#" class="btn btn-outline-primary">View All Products</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="container mb-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="https://i.pinimg.com/736x/b2/a5/f8/b2a5f8b6b404338879c44849e9e81e9e.jpg" class="img-fluid rounded" alt="About Us">
+            </div>
+            <div class="col-md-6">
+                <h2 class="mb-4">Our Story</h2>
+                <p class="lead">Chic & Elegance was born from a passion for timeless fashion that celebrates individuality.</p>
+                <p>Founded in 2015, we've grown from a small boutique to a beloved brand known for our curated collections that blend contemporary trends with classic elegance. Each piece in our collection is carefully selected for quality, comfort, and style.</p>
+                <p>We believe fashion should make you feel confident and beautiful, without compromising on comfort or sustainability.</p>
+                <a href="#" class="btn btn-primary mt-3">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="container mb-5">
+        <div class="text-center mb-5">
+            <h2 class="mb-3">What Our Customers Say</h2>
+            <p class="text-muted">Real experiences from our fashion community</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="testimonial-card text-center">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="testimonial-img mb-3" alt="Sarah J.">
+                    <h5>Sarah J.</h5>
+                    <div class="mb-3">
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                    </div>
+                    <p>"The floral dress is even more beautiful in person! The fabric is so soft and the fit is perfect. I've received so many compliments!"</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card text-center">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" class="testimonial-img mb-3" alt="Emily R.">
+                    <h5>Emily R.</h5>
+                    <div class="mb-3">
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                    </div>
+                    <p>"I'm obsessed with my new denim jacket. It's the perfect weight and goes with everything. Chic & Elegance never disappoints!"</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card text-center">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" class="testimonial-img mb-3" alt="Michael T.">
+                    <h5>Michael T.</h5>
+                    <div class="mb-3">
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-half text-warning"></i>
+                    </div>
+                    <p>"Bought the silk blouse for my wife's birthday. The quality is exceptional and she absolutely loves it. Great customer service too!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container text-center">
+            <h2 class="mb-4">Join Our Fashion Community</h2>
+            <p class="mb-4">Subscribe to receive exclusive offers, styling tips, and early access to new collections.</p>
+            
+            <form class="row g-3 justify-content-center">
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control form-control-lg" placeholder="Your email address">
+                        <button class="btn btn-primary" type="submit">Subscribe</button>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="newsletterCheck">
+                        <label class="form-check-label" for="newsletterCheck">
+                            I agree to receive emails and accept the privacy policy
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="mb-4">Chic & Elegance</h5>
+                    <p>Premium fashion for those who appreciate timeless style and exceptional quality.</p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-pinterest"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5 class="mb-4">Shop</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white">New Arrivals</a></li>
+                        <li class="mb-2"><a href="#" class="text-white">Dresses</a></li>
+                        <li class="mb-2"><a href="#" class="text-white">Tops</a></li>
+                        <li class="mb-2"><a href="#" class="text-white">Bottoms</a></li>
+                        <li class="mb-2"><a href="#" class="text-white">Accessories</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5 class="mb-4">Information</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-white">Contact</a></li>
+                        <li class="mb-2"><a href="#" class="text-white">Shipping Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-white">Returns & Exchanges</a></li>
+                        <li class="mb-2"><a href="#" class="text-white">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="mb-4">Contact Us</h5>
+                    <p><i class="bi bi-geo-alt me-2"></i> 123 Fashion Ave, New York, NY 10001</p>
+                    <p><i class="bi bi-envelope me-2"></i> hello@chicandelegance.com</p>
+                    <p><i class="bi bi-telephone me-2"></i> (555) 123-4567</p>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">© 2023 Chic & Elegance. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">
+                        <a href="#" class="text-white me-3">Privacy Policy</a>
+                        <a href="#" class="text-white">Terms of Service</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
